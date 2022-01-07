@@ -1,0 +1,35 @@
+import libs = hiredis%lib{hiredis-ssl}
+
+lib{redis-plus-plus}: libul{redis-plus-plus}: \
+    src/sw/redis++/{cxx hxx}{command command_options connection connection_pool errors pipeline redis redis_cluster reply sentinel shards shards_pool subscriber transaction} \
+    src/sw/redis++/cxx17/hxx{cxx_utils} \
+    src/sw/redis++/tls/{cxx hxx}{tls} \
+    src/sw/redis++/cxx{crc16} \
+    src/sw/redis++/hxx{queued_redis queued_redis.hpp redis.hpp redis_cluster.hpp utils redis++ cmd_formatter} \
+    $libs
+lib{redis-plus-plus}: def{redis-plus-plus}: include = ($cxx.target.system == 'win32-msvc')
+def{redis-plus-plus}: libul{redis-plus-plus}
+
+if ($cxx.target.class == 'windows')
+{
+     cxx.poptions =+ "-DNOMINMAX"
+}
+
+if ($cxx.target.class == 'linux')
+{
+    cxx.libs =+ "-lpthread"
+}
+
+cxx.poptions =+ "-I$src_root/upstream/src" "-I$src_root/upstream/src/sw/redis++" "-I$src_root/upstream/src/sw/redis++/cxx17" "-I$src_root/upstream/src/sw/redis++/tls"
+
+lib{redis-plus-plus}:
+{
+  cxx.export.poptions += "-I$src_root/upstream/src" "-I$src_root/upstream/src/sw/redis++" "-I$src_root/upstream/src/sw/redis++/cxx17" "-I$src_root/upstream/src/sw/redis++/tls"
+  cxx.export.libs += $libs
+}
+
+src/hxx{*}:
+{
+    install = include/
+    install.subdirs = true
+}
