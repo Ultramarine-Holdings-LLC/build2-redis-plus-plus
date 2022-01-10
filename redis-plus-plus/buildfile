@@ -37,9 +37,11 @@ src/hxx{*}:
 src/sw/redis++/cxx17/hxx{*}:
 {
     install = include/sw/redis++/
+    install.subdirs = false
 }
 
 src/sw/redis++/tls/hxx{*}:
 {
     install = include/sw/redis++/
+    install.subdirs = false
 }
