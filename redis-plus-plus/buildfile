@@ -34,12 +34,12 @@ src/hxx{*}:
     install.subdirs = true
 }
 
-src/sw/redis++/cxx17/hxx{*}
+src/sw/redis++/cxx17/hxx{*}:
 {
     install = include/sw/redis++/
 }
 
-src/sw/redis++/tls/hxx{*}
+src/sw/redis++/tls/hxx{*}:
 {
     install = include/sw/redis++/
 }
