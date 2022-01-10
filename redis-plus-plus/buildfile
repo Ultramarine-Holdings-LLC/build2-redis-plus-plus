@@ -5,7 +5,7 @@ lib{redis-plus-plus}: libul{redis-plus-plus}: \
     src/sw/redis++/cxx17/hxx{cxx_utils} \
     src/sw/redis++/tls/{cxx hxx}{tls} \
     src/sw/redis++/cxx{crc16} \
-    src/sw/redis++/hxx{queued_redis queued_redis.hpp redis.hpp redis_cluster.hpp utils redis++ cmd_formatter} \
+    src/sw/redis++/hxx{queued_redis queued_redis.hpp redis.hpp redis_cluster.hpp utils redis++ cmd_formatter command_args} \
     $libs
 lib{redis-plus-plus}: def{redis-plus-plus}: include = ($cxx.target.system == 'win32-msvc')
 def{redis-plus-plus}: libul{redis-plus-plus}
