@@ -20,11 +20,11 @@ if ($cxx.target.class == 'linux')
     cxx.libs =+ "-lpthread"
 }
 
-cxx.poptions =+ "-I$src_root/upstream/src" "-I$src_root/upstream/src/sw/redis++" "-I$src_root/upstream/src/sw/redis++/cxx17" "-I$src_root/upstream/src/sw/redis++/tls"
+cxx.poptions =+ "-I$src_base/src" "-I$src_base/src/sw/redis++" "-I$src_base/src/sw/redis++/cxx17" "-I$src_base/src/sw/redis++/tls"
 
 lib{redis-plus-plus}:
 {
-  cxx.export.poptions += "-I$src_root/upstream/src" "-I$src_root/upstream/src/sw/redis++" "-I$src_root/upstream/src/sw/redis++/cxx17" "-I$src_root/upstream/src/sw/redis++/tls"
+  cxx.export.poptions += "-I$src_base/src" "-I$src_base/src/sw/redis++" "-I$src_base/src/sw/redis++/cxx17" "-I$src_base/src/sw/redis++/tls"
   cxx.export.libs += $libs
 }
 
