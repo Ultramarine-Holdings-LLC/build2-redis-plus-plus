@@ -7,4 +7,4 @@ cxx{*}: extension = cxx
 
 exe{*}: test = true
 
-test.target = $c.target
+test.target = $cxx.target
